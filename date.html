@@ -1,0 +1,959 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffe9f0">
+<title>Para mi Pocholita 💗</title>
+
+<style>
+* { box-sizing: border-box; }
+
+:root {
+  --rosa: #f5a4bf;
+  --rosa-fuerte: #dc7398;
+  --rosa-claro: #fff0f5;
+  --lila: #d9c8f3;
+  --texto: #624354;
+  --texto-suave: #856779;
+  --crema: #fffdf8;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 22px 14px;
+  font-family: "Trebuchet MS", sans-serif;
+  color: var(--texto);
+  background:
+    radial-gradient(circle at 10% 15%, #ffffffaa 0 2px, transparent 3px),
+    radial-gradient(circle at 85% 75%, #ffffffaa 0 3px, transparent 4px),
+    linear-gradient(135deg, #ffe5ee, #fff8e9, #eee5ff);
+  background-size: 80px 80px, 110px 110px, auto;
+}
+
+.card {
+  width: min(100%, 540px);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 28px 23px 25px;
+  border-radius: 30px;
+  background: var(--crema);
+  border: 2px solid #ffffff;
+  box-shadow: 0 18px 55px #b77a9625;
+}
+
+.card::before,
+.card::after {
+  content: "✦";
+  position: absolute;
+  color: #edb7ca;
+  font-size: 21px;
+  opacity: .7;
+  pointer-events: none;
+}
+
+.card::before { top: 18px; left: 17px; }
+.card::after { top: 35px; right: 20px; }
+
+/* MIMO: mascota dibujada con CSS */
+
+.mimo {
+  width: 146px;
+  height: 132px;
+  position: relative;
+  margin: 13px auto 25px;
+  animation: flotar 3.2s ease-in-out infinite;
+}
+
+.cuerpo {
+  position: absolute;
+  width: 116px;
+  height: 105px;
+  bottom: 0;
+  left: 15px;
+  border: 3px solid white;
+  border-radius: 45% 45% 43% 43%;
+  background: linear-gradient(145deg, #fff1f0, #f8bed0 80%);
+  box-shadow: 0 8px 0 #d78ba422, inset -5px -5px 12px #e78ca526;
+  z-index: 2;
+}
+
+.oreja {
+  position: absolute;
+  width: 43px;
+  height: 67px;
+  top: 0;
+  border: 4px solid white;
+  border-radius: 65% 65% 48% 48%;
+  background: linear-gradient(130deg, #fff0f0, #f4abc3);
+  z-index: 1;
+}
+
+.oreja::after {
+  content: "";
+  position: absolute;
+  inset: 9px 9px 12px;
+  border-radius: inherit;
+  background: #f6a1bb99;
+}
+
+.oreja.izq {
+  left: 24px;
+  transform: rotate(-23deg);
+}
+
+.oreja.der {
+  right: 24px;
+  transform: rotate(23deg);
+}
+
+.cuerpo .ojo {
+  position: absolute;
+  top: 34px;
+  width: 11px;
+  height: 15px;
+  background: #624354;
+  border-radius: 50%;
+  box-shadow: inset 3px 2px 0 white;
+  animation: parpadeo 5s infinite;
+}
+
+.ojo.izq { left: 26px; }
+.ojo.der { right: 26px; }
+
+.meji {
+  position: absolute;
+  top: 53px;
+  width: 21px;
+  height: 11px;
+  border-radius: 50%;
+  background: #f18cab88;
+}
+
+.meji.izq { left: 11px; }
+.meji.der { right: 11px; }
+
+.boca {
+  position: absolute;
+  top: 52px;
+  left: 51px;
+  width: 13px;
+  height: 10px;
+  border-bottom: 2px solid #805267;
+  border-radius: 50%;
+}
+
+.boca::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 4px;
+  width: 5px;
+  height: 4px;
+  border-radius: 50%;
+  background: #e78ba9;
+}
+
+.barriga {
+  position: absolute;
+  width: 42px;
+  height: 27px;
+  bottom: 8px;
+  left: 34px;
+  border-radius: 50%;
+  background: #fff9f6bb;
+}
+
+.brazo {
+  position: absolute;
+  width: 28px;
+  height: 37px;
+  bottom: 13px;
+  background: linear-gradient(130deg, #fff0f0, #f4b2c8);
+  border: 3px solid white;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.brazo.izq { left: 9px; transform: rotate(-30deg); }
+.brazo.der { right: 9px; transform: rotate(30deg); }
+
+.corazon {
+  position: absolute;
+  left: 46px;
+  bottom: 15px;
+  color: #dc7198;
+  font-size: 27px;
+  line-height: 1;
+  z-index: 4;
+  filter: drop-shadow(0 2px 2px #c36b8833);
+}
+
+.chispita {
+  position: absolute;
+  color: #edb5c9;
+  font-size: 23px;
+  animation: brillar 2s ease-in-out infinite;
+}
+
+.chispita.uno { top: 37px; left: 0; }
+.chispita.dos { top: 50px; right: 0; animation-delay: .7s; }
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+@keyframes brillar {
+  0%, 100% { opacity: .4; transform: scale(.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes parpadeo {
+  0%, 44%, 48%, 100% { transform: scaleY(1); }
+  46% { transform: scaleY(.12); }
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(9px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.etiqueta {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 30px;
+  background: #fff0f5;
+  color: #c4668a;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(27px, 7vw, 36px);
+  line-height: 1.2;
+  margin: 15px 0;
+  color: #79516b;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.75;
+  white-space: pre-line;
+  color: var(--texto-suave);
+  margin: 13px 0;
+}
+
+.botones {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+button {
+  width: 100%;
+  font: inherit;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.4;
+  padding: 14px 16px;
+  border: 1.5px solid #f0bfd0;
+  border-radius: 30px;
+  background: #fff8fa;
+  color: var(--texto);
+  cursor: pointer;
+  transition: transform .2s, background .2s, box-shadow .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: #ffeaf1;
+  box-shadow: 0 5px 12px #d78ba422;
+}
+
+button:focus-visible {
+  outline: 3px solid #b47ac9;
+  outline-offset: 3px;
+}
+
+button:active { transform: scale(.98); }
+
+button.principal {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(120deg, #ee94b2, #e77fa3);
+}
+
+button.principal:hover {
+  background: linear-gradient(120deg, #e985a7, #dc6e98);
+}
+
+button.lila {
+  background: linear-gradient(120deg, #e9defb, #f5eafa);
+  border-color: #d6c1ee;
+}
+
+button:disabled {
+  opacity: .65;
+  cursor: default;
+  transform: none;
+}
+
+.nota {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #ad8d9f;
+  margin-top: 18px;
+}
+
+/* Sobres secretos */
+
+.sobres {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 22px 0 8px;
+}
+
+.sobre {
+  min-width: 0;
+  padding: 15px 9px;
+  border-radius: 20px;
+  border: 1px solid #f0cad8;
+  background: linear-gradient(150deg, #fff0f5, #fffaf8);
+}
+
+.sobre:nth-child(2) {
+  background: linear-gradient(150deg, #f0e8ff, #fffaf8);
+  border-color: #d8c6ee;
+}
+
+.sobre .sobre-icono {
+  font-size: 43px;
+  margin: 5px 0 12px;
+  display: block;
+  filter: drop-shadow(0 4px 3px #bd7c9922);
+}
+
+.sobre h2 {
+  margin: 5px 0 9px;
+  font-size: 17px;
+  font-family: Georgia, serif;
+}
+
+.sobre p {
+  font-size: 13px;
+  line-height: 1.55;
+  min-height: 60px;
+  margin: 8px 0;
+}
+
+.sobre button {
+  font-size: 13px;
+  padding: 11px 7px;
+  border-radius: 22px;
+}
+
+/* Tarjetas de restaurantes */
+
+.restaurante {
+  margin: 20px 0;
+  padding: 20px 15px;
+  border: 1px solid #f0d6e0;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #fff0f5, #fffaf2);
+  animation: aparecer .4s ease both;
+}
+
+.restaurante.hanazono {
+  background: linear-gradient(145deg, #f0e8ff, #fffaf2);
+  border-color: #d9c9ef;
+}
+
+.restaurante .flor {
+  font-size: 49px;
+  margin-bottom: 8px;
+}
+
+.restaurante h2 {
+  font: bold 27px Georgia, serif;
+  margin: 8px 0;
+  color: #79516b;
+}
+
+.restaurante .subtitulo {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #bc7795;
+}
+
+.restaurante p { font-size: 15px; }
+
+.seleccion {
+  margin-top: 16px;
+  padding: 13px;
+  border-radius: 16px;
+  background: #fff0f5;
+  color: #a85579;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.pie {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #bd99aa;
+}
+
+/* NUEVO: celebración romántica */
+
+.celebracion {
+  position: relative;
+  overflow: hidden;
+  margin: 18px 0 8px;
+  padding: 20px 10px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #fff0f5, #f2eaff, #fff7e7);
+  border: 1px solid #f4d4e2;
+  animation: aparecer .6s ease both;
+}
+
+.celebracion h2 {
+  font-family: Georgia, serif;
+  font-size: 23px;
+  color: #b75f87;
+  margin: 8px 0;
+}
+
+.celebracion p {
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+.particula {
+  position: absolute;
+  top: -30px;
+  left: var(--x);
+  font-size: var(--tam);
+  pointer-events: none;
+  z-index: 5;
+  animation: caer var(--duracion) ease-in forwards;
+  animation-delay: var(--espera);
+}
+
+@keyframes caer {
+  0% {
+    transform: translate3d(0, -10px, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12% { opacity: 1; }
+  85% { opacity: .9; }
+  100% {
+    transform: translate3d(var(--desvio), 290px, 0) rotate(240deg);
+    opacity: 0;
+  }
+}
+
+.mimo.feliz {
+  animation: saltito .65s ease-in-out 3;
+}
+
+@keyframes saltito {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  35% { transform: translateY(-22px) rotate(-7deg); }
+  65% { transform: translateY(-12px) rotate(7deg); }
+}
+
+@media (max-width: 380px) {
+  .card { padding: 24px 15px 20px; }
+  .sobre { padding: 12px 6px; }
+  .sobre button { font-size: 12px; }
+  p { font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .particula { display: none; }
+  .mimo.feliz { animation: none; }
+}
+</style>
+</head>
+
+<body>
+<main class="card" aria-live="polite">
+
+  <div class="mimo" aria-label="Mimo, una adorable mascota rosa" role="img">
+    <span class="chispita uno">✦</span>
+    <span class="chispita dos">♡</span>
+    <div class="oreja izq"></div>
+    <div class="oreja der"></div>
+    <div class="cuerpo">
+      <span class="ojo izq"></span>
+      <span class="ojo der"></span>
+      <span class="meji izq"></span>
+      <span class="meji der"></span>
+      <span class="boca"></span>
+      <span class="barriga"></span>
+      <span class="brazo izq"></span>
+      <span class="brazo der"></span>
+      <span class="corazon">♥</span>
+    </div>
+  </div>
+
+  <div class="etiqueta" id="etiqueta">Un secreto para ti ♡</div>
+  <h1 id="titulo">¡Pssst, Pocholita! 💌</h1>
+  <p id="texto"></p>
+  <div id="contenidoExtra"></div>
+  <div class="botones" id="botones"></div>
+  <div class="pie">Preparado con cariño, para Candela ♡</div>
+
+</main>
+
+<script>
+"use strict";
+
+const titulo = document.getElementById("titulo");
+const texto = document.getElementById("texto");
+const etiqueta = document.getElementById("etiqueta");
+const botones = document.getElementById("botones");
+const contenidoExtra = document.getElementById("contenidoExtra");
+
+const escenas = {
+  inicio: {
+    etiqueta: "Correo especial para Pocholita",
+    titulo: "¡Pssst, Pocholita! 💌",
+    texto: "Holiii. Soy Mimo, guardián oficial de las sorpresas bonitas.\n\nMe han encargado una misión para ti… ¿estás preparada?",
+    opciones: [
+      ["¡Estoy preparadísima! ✨", "preparada"],
+      ["¿Qué estás tramando? 👀", "curiosa"]
+    ]
+  },
+
+  preparada: {
+    etiqueta: "Misión secreta · Fase 1",
+    titulo: "¡Esa es mi Pocholita! 🌷",
+    texto: "Tengo una pregunta importantísima…\n\n¿Qué crees que ha preparado esa personita que te quiere tanto?",
+    opciones: [
+      ["Un ratito bonito juntos 🫶", "pista"],
+      ["¡Una sorpresa! 👀", "sorpresa"]
+    ]
+  },
+
+  curiosa: {
+    etiqueta: "Shhh… es un secreto",
+    titulo: "Uy, qué impaciente JAJA 💗",
+    texto: "Solo puedo decirte que alguien lleva un ratito preparando algo para verte sonreír.\n\n¿Seguimos investigando?",
+    opciones: [
+      ["¡Obvio que sí! ✨", "preparada"],
+      ["Confío en ti, Mimo 💌", "pista"]
+    ]
+  },
+
+  pista: {
+    etiqueta: "Pista desbloqueada",
+    titulo: "Un lugar especial 🌄",
+    texto: "Imagina airecito, un horizonte precioso y un sitio donde parar un momento y olvidarnos de las prisas.\n\n¿Se te ocurre dónde puede ser?",
+    opciones: [
+      ["¡Un mirador! 🌄", "mirador"],
+      ["Dame otra pista 🙈", "otraPista"]
+    ]
+  },
+
+  sorpresa: {
+    etiqueta: "Detective Pocholita",
+    titulo: "¡Vas por buen camino! 💫",
+    texto: "La misión tiene dos partes: una para disfrutar del momento y otra para disfrutar de algo rico.\n\n¿Descubrimos la primera?",
+    opciones: [
+      ["¡Vamos allá! 🕵️‍♀️", "mirador"],
+      ["Me dejo llevar 💞", "mirador"]
+    ]
+  },
+
+  otraPista: {
+    etiqueta: "Pista extra",
+    titulo: "Mira hacia el horizonte… ☁️",
+    texto: "Hay vistas, un poquito de tranquilidad y dos personas compartiendo el momento.\n\n¿Ahora sí?",
+    opciones: [
+      ["¡El mirador! ❤️", "mirador"]
+    ]
+  },
+
+  mirador: {
+    etiqueta: "Primera sorpresa desbloqueada",
+    titulo: "¡Nos vamos a un mirador! 🌄",
+    texto: "¡SÍÍÍ! La primera parte de la cita es disfrutar de las vistas y tener un ratito para nosotros, sin prisas y sin necesitar nada más.\n\nPero, Pocholita… Mimo todavía guarda un secreto.",
+    opciones: [
+      ["¿Hay algo más? 🥺", "cena"],
+      ["Esto ya me está gustando 💗", "cena"]
+    ]
+  },
+
+  cena: {
+    etiqueta: "Gran revelación",
+    titulo: "¡Y después, cena sorpresa! 🍽️❤️",
+    texto: "¡Exacto, mi niña! Después del mirador nos espera una cena sorpresa.\n\nQuería regalarte un ratito bonito, de esos que se convierten en recuerdos. Porque mi parte favorita de cualquier plan es compartirlo contigo.\n\nPero aún no hemos terminado… esta vez, la última sorpresa la eliges tú.",
+    opciones: [
+      ["¡Quiero descubrirla! 💌", "sobres"],
+      ["Mimo, sigue contando 🥹", "sobres"]
+    ]
+  },
+
+  sobres: {
+    etiqueta: "Dos opciones secretas 💌",
+    titulo: "Una última decisión, Pocholita",
+    texto: "He preparado dos sobres. Cada uno esconde un restaurante distinto.\n\nPuedes abrirlos en el orden que quieras, descubrir las dos opciones y elegir dónde te apetece cenar conmigo.\n\n¿Abrimos los secretos?",
+    tipo: "sobres",
+    opciones: [
+      ["Ya he visto los dos ❤️", "eleccion"],
+      ["Volver a la cena ↶", "cena"]
+    ]
+  },
+
+  hanami: {
+    etiqueta: "Sobre secreto · Opción 1",
+    titulo: "¡Has descubierto Hanami! 🌸",
+    texto: "Primera opción revelada, Pocholita.\n\nHanami es uno de los dos restaurantes que he pensado para nuestra cena. ¿Te gustaría que esta fuera nuestra elección?",
+    opciones: [
+      ["¡Elijo Hanami! 🌸", "elegidoHanami"],
+      ["Quiero ver el otro 💌", "hanazono"],
+      ["Volver a los sobres ↶", "sobres"]
+    ]
+  },
+
+  hanazono: {
+    etiqueta: "Sobre secreto · Opción 2",
+    titulo: "¡Has descubierto Hanazono! 🌿",
+    texto: "¡Aquí está la segunda opción!\n\nHanazono también forma parte de mi pequeña sorpresa. Ahora ya conoces los dos restaurantes y puedes elegir el que más te apetezca.",
+    opciones: [
+      ["¡Elijo Hanazono! 🌿", "elegidoHanazono"],
+      ["Quiero ver el otro 💌", "hanami"],
+      ["Volver a los sobres ↶", "sobres"]
+    ]
+  },
+
+  eleccion: {
+    etiqueta: "Tu elección ❤️",
+    titulo: "¿Dónde cenamos, Pocholita?",
+    texto: "Los dos secretos ya están descubiertos. Ahora viene la parte más importante: elegir juntos dónde disfrutar de nuestra cena.\n\nPulsa tu favorito y Mimo celebrará tu decisión.",
+    tipo: "eleccion",
+    opciones: [
+      ["Elegir Hanami 🌸", "elegidoHanami"],
+      ["Elegir Hanazono 🌿", "elegidoHanazono"],
+      ["Volver a los sobres 💌", "sobres"]
+    ]
+  },
+
+  elegidoHanami: {
+    etiqueta: "Elección hecha · Hanami",
+    titulo: "¡Nos vamos a Hanami! 🌸❤️",
+    texto: "¡Elección descubierta y misión completada!\n\nPocholita, nuestra cena será en Hanami. Me hace ilusión compartir esta pequeña aventura contigo, desde el mirador hasta el último ratito de nuestra cita.\n\nGracias por formar parte de mis planes favoritos. Lo bonito no es solo el sitio al que vamos, sino que voy contigo.",
+    opciones: [
+      ["¡Qué ganas de esta noche! 💗", "amorHanami"],
+      ["Volver a ver los restaurantes ↶", "sobres"]
+    ]
+  },
+
+  elegidoHanazono: {
+    etiqueta: "Elección hecha · Hanazono",
+    titulo: "¡Nos vamos a Hanazono! 🌿❤️",
+    texto: "¡Elección descubierta y misión completada!\n\nPocholita, nuestra cena será en Hanazono. Me hace ilusión compartir esta pequeña aventura contigo, desde el mirador hasta el último ratito de nuestra cita.\n\nGracias por formar parte de mis planes favoritos. Lo bonito no es solo el sitio al que vamos, sino que voy contigo.",
+    opciones: [
+      ["¡Qué ganas de esta noche! 💗", "amorHanazono"],
+      ["Volver a ver los restaurantes ↶", "sobres"]
+    ]
+  },
+
+  amorHanami: {
+    etiqueta: "Mensaje entregado con amor",
+    titulo: "Nuestra cita nos espera 💗",
+    texto: "Entonces queda elegido: Hanami. 🌸\n\nTú ven con ganas de disfrutar y déjame encargarme del resto.\n\nNos esperan las vistas, una cena rica y un ratito para nosotros.\n\nUn besito de tu cómplice de esta noche. ❤️",
+    opciones: [
+      ["Volver al principio ↺", "inicio"]
+    ]
+  },
+
+  amorHanazono: {
+    etiqueta: "Mensaje entregado con amor",
+    titulo: "Nuestra cita nos espera 💗",
+    texto: "Entonces queda elegido: Hanazono. 🌿\n\nTú ven con ganas de disfrutar y déjame encargarme del resto.\n\nNos esperan las vistas, una cena rica y un ratito para nosotros.\n\nUn besito de tu cómplice de esta noche. ❤️",
+    opciones: [
+      ["Volver al principio ↺", "inicio"]
+    ]
+  }
+};
+
+/* Estado de los sobres */
+const sobresAbiertos = {
+  hanami: false,
+  hanazono: false
+};
+
+let restauranteElegido = null;
+
+/* Crear botones de navegación */
+function crearBoton(rotulo, destino, clase = "") {
+  const boton = document.createElement("button");
+  boton.type = "button";
+  boton.textContent = rotulo;
+
+  if (clase) boton.className = clase;
+
+  boton.addEventListener("click", () => mostrar(destino));
+  botones.appendChild(boton);
+}
+
+/* Dibujar los dos sobres secretos */
+function crearSobres() {
+  const contenedor = document.createElement("div");
+  contenedor.className = "sobres";
+
+  const datos = [
+    {
+      id: "hanami",
+      nombre: "Sobre número 1",
+      icono: sobresAbiertos.hanami ? "🌸" : "💌",
+      descripcion: sobresAbiertos.hanami
+        ? "¡Hanami está descubierto!"
+        : "Un secreto de color rosa",
+      clase: "",
+      destino: "hanami"
+    },
+    {
+      id: "hanazono",
+      nombre: "Sobre número 2",
+      icono: sobresAbiertos.hanazono ? "🌿" : "💌",
+      descripcion: sobresAbiertos.hanazono
+        ? "¡Hanazono está descubierto!"
+        : "Un secreto de color lila",
+      clase: "lila",
+      destino: "hanazono"
+    }
+  ];
+
+  datos.forEach(dato => {
+    const tarjeta = document.createElement("div");
+    tarjeta.className = "sobre";
+
+    const icono = document.createElement("span");
+    icono.className = "sobre-icono";
+    icono.textContent = dato.icono;
+
+    const nombre = document.createElement("h2");
+    nombre.textContent = dato.nombre;
+
+    const descripcion = document.createElement("p");
+    descripcion.textContent = dato.descripcion;
+
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.textContent = sobresAbiertos[dato.id]
+      ? "Ver de nuevo ♡"
+      : "Abrir el sobre ✨";
+
+    boton.className = dato.clase === "lila" ? "lila" : "principal";
+
+    boton.addEventListener("click", () => {
+      sobresAbiertos[dato.id] = true;
+      mostrar(dato.destino);
+    });
+
+    tarjeta.append(icono, nombre, descripcion, boton);
+    contenedor.appendChild(tarjeta);
+  });
+
+  contenidoExtra.appendChild(contenedor);
+
+  const nota = document.createElement("p");
+  nota.className = "nota";
+  nota.textContent =
+    "Puedes abrir los dos sobres. ¡Ningún secreto se pierde!";
+  contenidoExtra.appendChild(nota);
+}
+
+/* Dibujar la tarjeta de cada restaurante */
+function crearRestaurante(nombre) {
+  const esHanami = nombre === "Hanami";
+
+  const tarjeta = document.createElement("section");
+  tarjeta.className = "restaurante" + (esHanami ? "" : " hanazono");
+
+  const flor = document.createElement("div");
+  flor.className = "flor";
+  flor.textContent = esHanami ? "🌸" : "🌿";
+
+  const subtitulo = document.createElement("div");
+  subtitulo.className = "subtitulo";
+  subtitulo.textContent = esHanami
+    ? "Primera opción secreta"
+    : "Segunda opción secreta";
+
+  const nombreRestaurante = document.createElement("h2");
+  nombreRestaurante.textContent = nombre;
+
+  const descripcion = document.createElement("p");
+  descripcion.textContent = esHanami
+    ? "Una de las dos opciones que he preparado para nuestra cena. ¿Será esta nuestra elegida?"
+    : "La otra opción de nuestra pequeña aventura. ¿Te apetece que cenemos aquí?";
+
+  tarjeta.append(flor, subtitulo, nombreRestaurante, descripcion);
+  contenidoExtra.appendChild(tarjeta);
+}
+
+/* NUEVO: celebración con corazones, flores y saltitos */
+function celebrarEleccion(nombre) {
+  const zona = document.createElement("div");
+  zona.className = "celebracion";
+
+  const tituloCelebracion = document.createElement("h2");
+  tituloCelebracion.textContent = nombre === "Hanami"
+    ? "¡Una elección preciosa! 🌸"
+    : "¡Qué ilusión, Pocholita! 💗";
+
+  const mensaje = document.createElement("p");
+  mensaje.textContent =
+    "Mimo está dando saltitos de felicidad. ¡Nuestra cita ya tiene restaurante!";
+
+  zona.append(tituloCelebracion, mensaje);
+  contenidoExtra.appendChild(zona);
+
+  // Mimo da tres pequeños saltitos.
+  const mascota = document.querySelector(".mimo");
+  mascota.classList.remove("feliz");
+  void mascota.offsetWidth;
+  mascota.classList.add("feliz");
+
+  // Lluvia de corazones, flores y estrellitas.
+  const simbolos = ["💗", "💕", "🌸", "✨", "♥"];
+
+  for (let i = 0; i < 26; i++) {
+    const particula = document.createElement("span");
+    particula.className = "particula";
+    particula.textContent =
+      simbolos[Math.floor(Math.random() * simbolos.length)];
+
+    particula.style.setProperty("--x", Math.random() * 96 + "%");
+    particula.style.setProperty(
+      "--tam",
+      (12 + Math.random() * 13) + "px"
+    );
+    particula.style.setProperty(
+      "--duracion",
+      (2.4 + Math.random() * 2) + "s"
+    );
+    particula.style.setProperty(
+      "--espera",
+      (Math.random() * 1.5) + "s"
+    );
+    particula.style.setProperty(
+      "--desvio",
+      (Math.random() * 100 - 50) + "px"
+    );
+
+    zona.appendChild(particula);
+
+    particula.addEventListener("animationend", () => {
+      particula.remove();
+    });
+  }
+}
+
+/* Mostrar la escena elegida */
+function mostrar(nombre) {
+  const escena = escenas[nombre];
+  if (!escena) return;
+
+  etiqueta.textContent = escena.etiqueta;
+  titulo.textContent = escena.titulo;
+  texto.textContent = escena.texto;
+
+  botones.replaceChildren();
+  contenidoExtra.replaceChildren();
+
+  if (nombre === "sobres") {
+    crearSobres();
+  }
+
+  if (nombre === "hanami") {
+    sobresAbiertos.hanami = true;
+    crearRestaurante("Hanami");
+  }
+
+  if (nombre === "hanazono") {
+    sobresAbiertos.hanazono = true;
+    crearRestaurante("Hanazono");
+  }
+
+  if (nombre === "eleccion") {
+    const aviso = document.createElement("div");
+    aviso.className = "seleccion";
+
+    aviso.textContent =
+      sobresAbiertos.hanami && sobresAbiertos.hanazono
+        ? "¡Has descubierto los dos restaurantes! Ahora elige tu favorito."
+        : "Puedes elegir ahora o abrir los dos sobres antes de decidir.";
+
+    contenidoExtra.appendChild(aviso);
+  }
+
+  if (nombre === "elegidoHanami") {
+    restauranteElegido = "Hanami";
+    crearRestaurante(restauranteElegido);
+
+    const aviso = document.createElement("div");
+    aviso.className = "seleccion";
+    aviso.textContent = "❤️ Elección de Pocholita: Hanami";
+    contenidoExtra.appendChild(aviso);
+
+    // NUEVO: celebrar la elección de Hanami.
+    celebrarEleccion("Hanami");
+  }
+
+  if (nombre === "elegidoHanazono") {
+    restauranteElegido = "Hanazono";
+    crearRestaurante(restauranteElegido);
+
+    const aviso = document.createElement("div");
+    aviso.className = "seleccion";
+    aviso.textContent = "❤️ Elección de Pocholita: Hanazono";
+    contenidoExtra.appendChild(aviso);
+
+    // NUEVO: celebrar la elección de Hanazono.
+    celebrarEleccion("Hanazono");
+  }
+
+  escena.opciones.forEach(([rotulo, destino], indice) => {
+    let clase = "";
+
+    if (indice === 0) clase = "principal";
+    if (rotulo.includes("Hanazono")) clase = "lila";
+
+    crearBoton(rotulo, destino, clase);
+  });
+
+  titulo.style.animation = "none";
+  void titulo.offsetWidth;
+  titulo.style.animation = "aparecer .35s ease both";
+}
+
+/* Comenzar la aventura */
+mostrar("inicio");
+</script>
+</body>
+</html>
+
